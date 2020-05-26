@@ -7,10 +7,11 @@ install:
   - npm install
 script:
   - npm run build
-
+before_deploy:
+  - npm install netlify-cli -g
 deploy:
-  provider: netlify
-  dir: 'build/'
+  provider: script
+  script: netlify deploy -s $NETLIFY_SITE -t $NETLIFY_AUTH -p ./build
   cleanup: false
 notifications:
   slack: code-soul:onWWUFlZgoIoYyB2mPcMo66e
