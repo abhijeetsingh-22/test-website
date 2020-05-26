@@ -6,9 +6,10 @@ cache:
 install:
   - npm install
 script:
-  - npm run build
+  - npm run test
 before_deploy:
   - npm install netlify-cli -g
+  - npm run build
 deploy:
   provider: script
   script: netlify deploy -s $NETLIFY_SITE --auth $NETLIFY_AUTH -p --dir ./build
