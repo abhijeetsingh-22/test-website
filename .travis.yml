@@ -10,9 +10,12 @@ script:
 before_deploy:
   - npm install netlify-cli -g
   - npm run build
+  - ls -l
 deploy:
   provider: script
-  script: netlify deploy -s $NETLIFY_SITE --auth $NETLIFY_AUTH --prod --dir ./build
+  script:
+    - ls -l
+    - netlify deploy -s $NETLIFY_SITE --auth $NETLIFY_AUTH --prod --dir ./build
   cleanup: false
 notifications:
   slack: code-soul:onWWUFlZgoIoYyB2mPcMo66e
